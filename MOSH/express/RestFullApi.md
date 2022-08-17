@@ -26,3 +26,5 @@ this is a node package that works same as a live server
 <!-- Environment variable -->
 
 **Port**
+
+<!-- Handling POST Requests -->

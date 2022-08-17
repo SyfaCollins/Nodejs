@@ -11,7 +11,7 @@
 ***Deployment***
 
 
- 
+  
 
 
 
@@ -47,4 +47,9 @@ Every module has an id
 
   (function(export,require,module,__filename,__dirname))
 
-  <!--  -->
+  <!-- Events  -->
+  This is a signal that something has happened in your application(core event emmitter)
+
+  **eg**
+  http requests
+

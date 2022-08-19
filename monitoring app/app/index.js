@@ -44,7 +44,7 @@ var choseHandler = typeof(router(trimmedPath)) !== "undefined" ? router[trimmedP
 
 var data ={
   'trimmedPath' : trimmedPath,
-  ''
+  
 }
 
   req.on("end", function () {

@@ -4,17 +4,20 @@ const express = require("express");
 const app = express();
 
 const port = process.env.PORT || 3000;
-app.set("View engine", "ejs");
+app.set("view engine", "ejs");
 
 //home route
 app.get("/", (req, res) => {
   res.render("base", { title: "Login System" });
+  // res.send("Hello world");
 });
 
-const startApp = () => {
-  app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-  });
-};
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
 
-startApp();
+// const startApp = () => {
+
+// };
+
+// startApp();

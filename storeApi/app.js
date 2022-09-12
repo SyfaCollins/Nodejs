@@ -1,12 +1,12 @@
 /** @format */
 require("dotenv").config;
-require("express-async-errors");
+require("express-async-errors")
 
 const express = require("express");
 const app = express();
 
 const connectDB = require("./db/connect");
-const router = require("./routes/productsRoutes");
+const router = require("./routes/productsRoutes")
 
 //middleware
 app.use(express.json());
@@ -28,7 +28,7 @@ const port = process.env.PORT || 5000;
 //   res.send(`<h1>Home Products page</h1>`);
 // });
 
-app.use(router);
+app.use('/store',router);
 // app.use(notFoundMiddleWare);
 // app.use(errorHandlerMiddleware);
 

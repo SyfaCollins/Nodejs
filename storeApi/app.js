@@ -10,6 +10,7 @@ const productsRouter = require("./routes/productsRoutes");
 
 const errorHandlerMiddleware = require("./middleWare/error-handler");
 const notFoundMiddleWare = require("./middleWare/not-found");
+const { route } = require("./routes/productsRoutes");
 
 //middleware
 app.use(express.json());
@@ -19,13 +20,13 @@ const port = process.env.PORT || 5000;
 
 // routes
 
-app.get("/", (req, res) => {
+app.get("/api/v1", (req, res) => {
   res.send('<h1>Store API</h1><a href="/api/v1/products">products route</a>');
 });
 
 // products route
 
-app.use("/api/v1/products", productsRouter);
+app.use("/api/v1", productsRouter);
 app.use(notFoundMiddleWare);
 app.use(errorHandlerMiddleware);
 

@@ -1,5 +1,10 @@
 /** @format */
 
+/**
+ * This asyncWrapper takes in a functions and 
+ * return an async function 
+*/
+
 const asyncWrapper = (fn) => {
   return async (req, res, next) => {
     try {

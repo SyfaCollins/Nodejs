@@ -1,36 +1,33 @@
 /** @format */
 require("dotenv").config;
-require("express-async-errors")
+require("express-async-errors");
 
 const express = require("express");
 const app = express();
 
 const connectDB = require("./db/connect");
-const router = require("./routes/productsRoutes")
+const productsRouter = require("./routes/productsRoutes");
+
+const errorHandlerMiddleware = require("./middleWare/error-handler");
+const notFoundMiddleWare = require("./middleWare/not-found");
 
 //middleware
 app.use(express.json());
 
-// const errorHandlerMiddleware = require("./middleWare/error-handler");
-// const notFoundMiddleWare = require("./middleWare/not-found");
-
 //PORT
 const port = process.env.PORT || 5000;
 
-//Routes
-// app.get("/", (req, res) => {
-//   res.send(
-//     `<h1>Product Store</h1><a href="/api/v1/products"> view all products</a>`
-//   );
-// });
+// routes
 
-// app.get("/api/v1/products", (req, res) => {
-//   res.send(`<h1>Home Products page</h1>`);
-// });
+app.get("/", (req, res) => {
+  res.send('<h1>Store API</h1><a href="/api/v1/products">products route</a>');
+});
 
-app.use('/store',router);
-// app.use(notFoundMiddleWare);
-// app.use(errorHandlerMiddleware);
+// products route
+
+app.use("/api/v1/products", productsRouter);
+app.use(notFoundMiddleWare);
+app.use(errorHandlerMiddleware);
 
 const startApp = () => {
   app.listen(port, async () => {

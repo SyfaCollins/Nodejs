@@ -3,6 +3,14 @@
 const express = require("express");
 const router = express.Router();
 
+
+/**
+ * These routes help to attach a specific path to a specific function inside the controller
+ * 
+ */
+
+
+
 const {
   getAllProducts,
   getAllProductsStatic,
@@ -11,4 +19,5 @@ const {
 router.route("/").get(getAllProducts);
 router.route("/static").get(getAllProductsStatic);
 
-module.exports.router;
+module.exports = router;
+

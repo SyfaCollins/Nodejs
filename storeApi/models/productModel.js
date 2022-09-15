@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
 
     price:{
         type:Number,
-        // required:[true, 'product price must be provided']
+        required:[true, 'product price must be provided']
     },
     feature:{
         type:Boolean,
@@ -25,7 +25,7 @@ const productSchema = new mongoose.Schema({
     },
     enum:{
         values:['ikea','liddy','caressa', 'marcos'],
-        message:'{VALUE} is not supported', 
+        // message:' is not supported', 
     }
 })
 

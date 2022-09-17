@@ -2,7 +2,7 @@
 
 const express = require("express");
 const app = express();
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 app.use(express.json());
 
@@ -31,11 +31,23 @@ app.post("/users", async (req, res) => {
   }
 });
 
-// app.post('/users', async(req,res)=>{
-//   const auth = req.body.name
-//   users.push(auth)
-//   console.log(users)
-// })
+app.post("/users/login", async (req, res) => {
+  const user = users.find((user) => (user.name = req.body.name));
+
+  if (user === null) {
+    return res.status(404).send("User not Found");
+  }
+
+  try {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      res.send("Success");
+    } else {
+      res.send("Rejected");
+    }
+  } catch (error) {
+    res.status(500).send();
+  }
+});
 
 //PORT
 

@@ -9,3 +9,14 @@ Content-Type: application/json
      "name": "Syfa",
      "password": "12345syfa"
 }
+
+###
+
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+
+{
+    "name": "Syfa",
+    "password": "12345syfa"
+}

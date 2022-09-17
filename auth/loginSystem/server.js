@@ -12,6 +12,12 @@ app.get("/", (req, res) => {
   // res.send("Hello world");
 });
 
+app.get("/things", (req, res) => {
+  console.log(req.method)
+  // res.render("base", { title: "Login System" });
+  // res.send("Hello world");
+});
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });

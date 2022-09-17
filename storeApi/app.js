@@ -21,7 +21,21 @@ const port = process.env.PORT || 5000;
 // routes
 
 app.get("/", (req, res) => {
-  res.send('<h1>Store API</h1><a href="/api/v1/products/test">products route</a>');
+  res.send(
+    '<h1>Store API</h1><a href="/api/v1/products/test">products route</a>'
+  );
+});
+
+//testing route
+
+app.get("/6000", (req, res) => {
+  console.log(req.header);
+  console.log(req.url);
+  console.log(req.ip);
+  console.log(req.method);
+  console.log(req.protocol);
+  console.log(req.url);
+
 });
 
 // products route

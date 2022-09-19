@@ -2,8 +2,8 @@
 
 const express = require("express");
 const app = express();
-app.use(express.urlencoded({ extender: false }));
-// const bcrypt = require("bcrypt");
+app.use(express.urlencoded({ extended: false }));
+const bcrypt = require("bcrypt");
 
 const port = process.env.PORT || 3000;
 app.set("view engine", "ejs");
@@ -24,9 +24,13 @@ app.get("/login", (req, res) => {
   res.send("page loaded successful");
 });
 
-app.get("/register", async (req, res) => {
+app.get("/register", (req, res) => {
+  res.render("register.ejs");
+});
+
+app.post("/register", async (req, res) => {
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
     // const hashedPassword = req.body.password;
 
     user.push({
@@ -48,9 +52,3 @@ app.get("/register", async (req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-// const startApp = () => {
-
-// };
-
-// startApp();

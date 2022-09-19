@@ -4,6 +4,9 @@ const express = require("express");
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 const bcrypt = require("bcrypt");
+require
+const initializePassport = require('./passport-config')
+
 
 const port = process.env.PORT || 3000;
 app.set("view engine", "ejs");

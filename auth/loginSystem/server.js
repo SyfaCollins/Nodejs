@@ -1,12 +1,22 @@
 /** @format */
 
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config;
+}
+
 const express = require("express");
 const app = express();
-app.use(express.urlencoded({ extended: false }));
 const bcrypt = require("bcrypt");
-require
-const initializePassport = require('./passport-config')
+require;
+const flash = require("express-flash");
+const session = require("express-session");
 
+app.use;
+
+const initializePassport = require("./passport-config");
+initializePassport(passport, (email) => {
+  user.find((user) => user.email === email);
+});
 
 const port = process.env.PORT || 3000;
 app.set("view engine", "ejs");
@@ -14,6 +24,15 @@ app.set("view engine", "ejs");
 //userDatabase
 
 const user = [];
+
+//middleWare
+app.use(express.urlencoded({ extended: false }));
+app.use(flash());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+  })
+);
 
 //home route
 app.get("/", (req, res) => {

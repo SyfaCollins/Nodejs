@@ -28,15 +28,15 @@ app.get("/", (req, res) => {
 
 //testing route
 
-app.get("/6000", (req, res) => {
-  console.log(req.header);
-  console.log(req.url);
-  console.log(req.ip);
-  console.log(req.method);
-  console.log(req.protocol);
-  console.log(req.url);
+// app.get("/6000", (req, res) => {
+//   console.log(req.header);
+//   console.log(req.url);
+//   console.log(req.ip);
+//   console.log(req.method);
+//   console.log(req.protocol);
+//   console.log(req.url);
 
-});
+// });
 
 // products route
 
@@ -48,7 +48,7 @@ const startApp = () => {
   app.listen(port, async () => {
     try {
       return (
-        await connectDB(process.env.MONGO_URI),
+        await connectDB(),
         console.log(`connected to database and listening at port ${port}`),
         app.get(port, (req, res) =>
           res.status(200).json({ msg: "Hello world" })

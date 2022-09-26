@@ -1,4 +1,6 @@
-const mongoose = require('mongoose')
+//This file holds the structure of the data to be collected 
+
+const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
     name: {

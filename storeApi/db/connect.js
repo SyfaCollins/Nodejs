@@ -1,5 +1,7 @@
 /** @format */
 
+//this holds the configurations of our database 
+
 const mongoose = require("mongoose");
 
 const connectDB = () => {

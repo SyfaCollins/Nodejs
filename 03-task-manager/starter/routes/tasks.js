@@ -1,5 +1,9 @@
 /** @format */
 
+/**
+ * Inside the routes file we require express
+ */
+
 const express = require("express");
 const router = express.Router();
 const {

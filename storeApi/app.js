@@ -1,16 +1,15 @@
 /** @format */
-require("dotenv").config;
-require("express-async-errors");
-
 const express = require("express");
 const app = express();
+require("dotenv").config();
+require("express-async-errors");
 
 const connectDB = require("./db/connect");
 const productsRouter = require("./routes/productsRoutes");
 
+const { route } = require("./routes/productsRoutes");
 const errorHandlerMiddleware = require("./middleWare/error-handler");
 const notFoundMiddleWare = require("./middleWare/not-found");
-const { route } = require("./routes/productsRoutes");
 
 //middleware
 app.use(express.json());
@@ -39,16 +38,16 @@ app.get("/", (req, res) => {
 // });
 
 // products route
-
 app.use("/api/v1", productsRouter);
 app.use(notFoundMiddleWare);
 app.use(errorHandlerMiddleware);
+
 
 const startApp = () => {
   app.listen(port, async () => {
     try {
       return (
-        await connectDB(),
+        await connectDB(process.env.MONGO_URI),
         console.log(`connected to database and listening at port ${port}`),
         app.get(port, (req, res) =>
           res.status(200).json({ msg: "Hello world" })

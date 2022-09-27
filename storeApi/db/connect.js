@@ -4,8 +4,8 @@
 
 const mongoose = require("mongoose");
 
-const connectDB = (ur) => {
-  return mongoose.connect('mongodb+srv://syfaCollins:zeddtedy@cluster0.i5dsajr.mongodb.net/STOREAPI?retryWrites=true&w=majority', {
+const connectDB = (url) => {
+  return mongoose.connect(url, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,

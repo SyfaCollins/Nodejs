@@ -1,6 +1,6 @@
 /** @format */
 
-require("dotenv").config;
+require("dotenv").config();
 
 const connectDB = require("./db/connect");
 const productModel = require("./models/productModel");
@@ -12,8 +12,10 @@ const start = async () => {
     await productModel.deleteMany();
     await productModel.create(jsonProducts);
     console.log("Connected successful!!!");
+    process.exit(0);
   } catch (error) {
     console.log(error);
+    process.exit(1);
   }
 };
 

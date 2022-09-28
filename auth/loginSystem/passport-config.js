@@ -3,7 +3,7 @@
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 
-const initialize = async (passport, getUserByEmail) => {
+const initialize = async (getUserByEmail) => {
   //call back function for verifying access
   const authenticateUser = (email, password, done) => {
     const user = getUserByEmail(email);

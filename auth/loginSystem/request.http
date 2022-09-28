@@ -1,6 +1,10 @@
-GET http://localhost:3000/register
+GET http://localhost:4000/
 
 ###
 
-POST  http://localhost:3000/register
+GET http://localhost:4000/registered
+
+###
+
+POST  http://localhost:4000/register
 Content-Type: application/json

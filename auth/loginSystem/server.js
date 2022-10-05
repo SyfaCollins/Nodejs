@@ -11,15 +11,16 @@ require;
 const userAuth = require("./routes/userAuth");
 const flash = require("express-flash");
 const session = require("express-session");
+const passport = require('passport')
 
 // app.use;
 
-// const initializePassport = require("./passport-config");
-// initializePassport(passport, (email) => {
-//   user.find((user) => user.email === email);
-// });
+const initializePassport = require("./passport-config");
+initializePassport(passport, (email) => {
+  user.find((user) => user.email === email);
+});
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3600;
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 

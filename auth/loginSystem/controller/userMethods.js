@@ -1,6 +1,7 @@
 /** @format */
 
 const express = require("express");
+const passport = require("passport");
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
@@ -11,11 +12,11 @@ const registerHome = (req, res) => {
   res.render("index");
 };
 
-const login = (req, res) => {
-  console.log(req.method);
-  res.render("login", { title: "Login System" });
-  res.send("page loaded successful");
-};
+const login = passport.authenticate('local',{
+  successRedirect:'/',
+  failureRedirect:'/login',
+  failureFlash:true
+})
 
 const register = (req, res) => {
   res.render("register.ejs");

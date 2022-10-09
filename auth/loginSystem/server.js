@@ -29,12 +29,18 @@ app.set("view engine", "ejs");
 const user = [];
 
 //middleWare
-// app.use(flash());
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//   })
-// );
+app.use(flash());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave:false,
+    saveUninitialized:false
+  })
+);
+
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 //home route
 

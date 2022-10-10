@@ -38,7 +38,7 @@ app.use(
   })
 );
 
-app.use(passport.initialize())
+app.use(passport.initialize())//this is inside the passport
 app.use(passport.session())
 
 

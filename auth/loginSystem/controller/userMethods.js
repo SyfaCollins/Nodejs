@@ -12,18 +12,22 @@ const registerHome = (req, res) => {
   res.render("index");
 };
 
-const login = passport.authenticate('local',{
-  successRedirect:'/',
-  failureRedirect:'/login',
-  failureFlash:true
-})
+// const login = () => passport.authenticate("local", {
+//   successRedirect: "/",
+//   failureRedirect: "/login",
+//   failureFlash: true,
+// });
+
+const loginUser = (req, res) => {
+  res.render("login.ejs");
+};
 
 const register = (req, res) => {
   res.render("register.ejs");
 };
 
 const registerUser = (req, res) => {
-    res.render("register.ejs");
-  };
+  res.render("register.ejs");
+};
 
-module.exports = { registerHome, login, register };
+module.exports = { registerHome, register, loginUser };

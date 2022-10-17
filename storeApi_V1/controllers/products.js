@@ -8,38 +8,41 @@ apply to our request and response
 */
 
 const getAllProductsStatic = async (req, res) => {
-
-  const search = 'a'
-  const products = await Product.find({ name: {$regex:search, $options:'i'} });
-
+  const products = await Product.find({}).sort("-name price");
 
   res.status(200).json({ products, nbHits: products.length });
   // throw new Error("This is testing the async error");
 };
 
 const getAllProducts = async (req, res) => {
-  const { featured ,company, name} = req.query;
+  const { featured, company, name, sort } = req.query;
 
   const queryObject = {};
 
   if (featured) {
-    queryObject.featured = featured === "true" ? true : false; 
+    queryObject.featured = featured === "true" ? true : false;
   }
 
   if (company) {
     queryObject.company = company;
   }
 
-  if(name) {
-    queryObject.name = name
+  if (name) {
+    queryObject.name = { $regex: name, $options: "i" };
   }
+  let result = Product.find(queryObject);
 
-  // if(sort){
+  if (sort) {
+    // console.log(sort);
+    const sortList = sort.split(",").join("");
+    result = result.sort(sortList);
+  } else {
+    result = result.sort("CreatedAt");
+  }
+  // console.log(queryObject);
+  // console.log(queryObject);
 
-  // }
-
-  console.log(queryObject);
-  const products = await Product.find(queryObject);
+  const products = await result;
   res.status(200).json({ products, nbHits: products.length });
 };
 

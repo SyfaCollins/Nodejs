@@ -7,15 +7,21 @@ This products controller holds all methods we want to
 apply to our request and response
 */
 
+//-------------------------TEST-----------------------------
+
 const getAllProductsStatic = async (req, res) => {
-  const products = await Product.find({}).sort("-name price");
+  const products = await Product.find({ price: { $gt: 20 } })
+    .select("name price")
+    .sort("price");
 
   res.status(200).json({ products, nbHits: products.length });
   // throw new Error("This is testing the async error");
 };
 
+//-----------------------all products route--------------------
+
 const getAllProducts = async (req, res) => {
-  const { featured, company, name, sort } = req.query;
+  const { featured, company, name, sort, numericFilters } = req.query;
 
   const queryObject = {};
 
@@ -39,6 +45,27 @@ const getAllProducts = async (req, res) => {
   } else {
     result = result.sort("CreatedAt");
   }
+
+  //## NumericFilters
+  //this is incomplete
+
+  if (numericFilters) {
+    const operatorMap = {
+      ">": "$gt",
+      ">=": "$gte",
+      "=": "$eq",
+      "<": "$lt",
+      "<=": "$lte",
+    };
+
+    const regEx = /\b(<|>|>=|<|<=)\b/g;
+    let filters = numericFilters.replace(
+      regEx,
+      (match) => `-${operatorMap[match]}-`
+    );
+    console.log(filters);
+  }
+
   // console.log(queryObject);
   // console.log(queryObject);
 

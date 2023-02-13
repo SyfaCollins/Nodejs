@@ -5,3 +5,5 @@ const {registerUser,loginUser} = require('../controllers/auth')
 
 router.get('/register',registerUser)
 router.get('/login',loginUser)
+
+module.exports = router

@@ -4,8 +4,11 @@ const express = require("express");
 const app = express();
 const router = require("./routes/products");
 
-//routes
+//-------------------ROUTES--------------------------
 app.use(router)
+
+
+//-------------------SERVER--------------------------
 
 //PORT
 

@@ -1,18 +1,22 @@
-/** @format */
+* @format
 
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital@0;1&display=swap");
 
 :root {
-  --dark: #2b2d42;
   --light: #adb5bd;
   --border: #dee2e6;
   --border-btn: #edf2f4;
+  --dark: #2b2d42;
+
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing:border-box;
+  /* background-color; */
+
+
 }
 
 a{
@@ -23,6 +27,9 @@ a{
 .container{
   max-width:1024px;
   margin:auto;
+  text-align:center;
+  
+
 }
 
 .nav_brand{
@@ -43,13 +50,13 @@ a{
   text-align:center;
 }
 
-.borded-shadow{
-  border:1px solid var(--border-btn);
+.border-shadow{
+  border:1px solid #edf2f4;
   box-shadow:1px 3px 10px #e9ecef;
 }
 
 .text-dark{
-  color:var(--dark);
+  color:#2b2d42;
 }
 
 .inline{
@@ -57,7 +64,7 @@ a{
 }
 
 .text-light{
-  color:var(--light)
+  color:#adb5bd;
 
 }
 
@@ -78,4 +85,48 @@ background-clip:text;
   margin-top:6em;
   font-family:'Barlow', sans-serif;
 }
+
+#site-main .container .box-nav > a{
+font-size:1em;
+padding:.5em 1em;
+margin:1em 0em;
+}
+
+#site-main .container form{
+  margin:2em 0;
+}
+
+table{
+  /* border:none; */
+  border-spacing:0px;
+  width:100%;
+}
+
+.table td, .table th{
+  padding:.8em;
+  vertical-align:top;
+  text-align:center;
+  border-bottom:1px solid  #dee2e6;
+}
+
+.table td> a.btn{
+  padding: .3em 1em;
+  font-size:1.1em;
+  margin:0.2em;
+}
+
+.table tr:hover{
+  background-color:#06d6a0
+}
+
+.table tr:hover td >a {
+  box-shadow:none;
+}
+
+.table .thead-dark th{
+  color:#fff;
+  background-color:#2b2d42;
+  border-color:#32383e;
+}
+
 

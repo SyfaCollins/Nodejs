@@ -3,7 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const path = require('path')
+const path = require('path');
 
 //------------------Variables----------------------
 const app = express();
@@ -29,13 +29,13 @@ dotenv.config({path:'config.env'})
 const PORT = process.env.PORT || 3300;
 
 app.get('/',(req ,res)=>{
-    res.render('index')
+    res.render('index');
 });
 
-app.get('/register',(req ,res)=>{
-    res.render('register')
+app.get('/add_user',(req ,res)=>{
+    res.render('add_user');
 });
 
 app.listen(PORT,()=>{
-    console.log(`Server is running on port ${PORT}`)
+    console.log(`Server is running on port ${PORT}`);
 })

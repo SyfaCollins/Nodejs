@@ -22,19 +22,15 @@ app.set('view engine','ejs');
 // app.use('/js', express.static(path.resolve(__dirname,"assets/js")))
 app.use(express.static(__dirname + '/public'));
 
+// load routes
+
+app.use('/', require('./server/routes/route'))
+
 
 //-----------Server running-----
 
 dotenv.config({path:'config.env'})
 const PORT = process.env.PORT || 3300;
-
-app.get('/',(req ,res)=>{
-    res.render('index');
-});
-
-app.get('/add_user',(req ,res)=>{
-    res.render('add_user');
-});
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);

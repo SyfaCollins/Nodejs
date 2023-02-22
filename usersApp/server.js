@@ -4,6 +4,12 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
+require('dotenv').config()
+
+const connectDB = require('./server/database/connect')
+
+
+connectDB();
 
 //------------------Variables----------------------
 const app = express();
@@ -29,7 +35,7 @@ app.use('/', require('./server/routes/route'))
 
 //-----------Server running-----
 
-dotenv.config({path:'config.env'})
+dotenv.config({path:"config.env"})
 const PORT = process.env.PORT || 3300;
 
 app.listen(PORT,()=>{

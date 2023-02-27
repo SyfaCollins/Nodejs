@@ -36,17 +36,73 @@ exports.create = (req, res) => {
 //retrieve and return all users OR retrieve and return a single user
 
 exports.find = (req, res) => {
-  req.header;
+  if (req.query.id) {
+    const id = req.query.id;
+
+    UserDB.findById(id)
+      .then((data) => {
+        if (!data) {
+          res.status(404).send({ message: `No such user with id${id}` });
+        } else {
+          res.send(data);
+        }
+      })
+      .catch((err) =>
+        res.status(500).send({ message: `Err retrieving user with id${id}` })
+      );
+  } else {
+    UserDB.find()
+      .then((user) => {
+        res.send(user);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "Error while trying to retrieve users",
+        });
+      });
+  }
 };
 
 //Update a new identified user by userID
 
 exports.update = (req, res) => {
-  req.header;
+  if (!req.body) {
+    return res.status(400).send({ message: "Data to update can not be empty" });
+  }
+
+  const id = req.params.id;
+
+  UserDB.findByIdAndUpdate(id, req.body, { userFindAndModify: false })
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot Update user with id ${id}. Maybe user not found.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ message: "Error update user information" });
+    });
 };
 
 //delete an identified user by userID
 
 exports.delete = (req, res) => {
-  req.header;
+  if (!req.body) {
+    return res.status(400).send({ message: "Data to update can not be empty" });
+  }
+
+  const id = req.params.id;
+
+  UserDB.findByIdAndDelete(id)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot Update user with id ${id}. Maybe user not found.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ message: "Could not delete User with id=" + id });
+    });
 };
